@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import AccidentCard from '../components/accidentcard';
+import AccidentCard from '../components/accidentcard/accidentcard';
 import ExpandablePin from '../components/expandablepin';
 
 export default function AboutPage() {

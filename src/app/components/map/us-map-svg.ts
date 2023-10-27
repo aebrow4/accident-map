@@ -9,7 +9,6 @@ export const mapGroup = create('svg:g')
   .attr('stroke-linejoin', 'round')
   .attr('stroke-linecap', 'round');
 
-// importing this causes build time to go up hella
 const data: UsAtlas = COUNTIES;
 const geoPath = _geoPath();
 const countiesPath = geoPath(mesh(data, data.objects.counties, (a: any, b: any) => a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0)));
