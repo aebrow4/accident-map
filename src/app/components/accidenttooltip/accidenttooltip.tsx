@@ -2,18 +2,23 @@ import * as React from 'react';
 import { Card } from '@mui/material';
 import AccidentLocation from '../accident/accidentlocation';
 import AccidentDate from '../accident/accidentdate';
-import AccidentDescription from '../accident/accidentdescription';
+import AccidentTags from '../accident/accidenttags';
+import { type IAccidentData } from '@/app/fixtures/accidents';
 
-export default function AccidentTooltip() {
+export default function AccidentTooltip({
+  accidentData
+}: { accidentData: IAccidentData }) {
   return (
         <Card
           className='max-w-sm'
         >
             <div className="bg-slate-300">
               <AccidentLocation />
-              <AccidentDate />
+              <AccidentDate
+                date={accidentData.date}
+              />
+              <AccidentTags />
             </div>
-            <AccidentDescription />
         </Card>
   );
 }
