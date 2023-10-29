@@ -4,9 +4,11 @@ import AccidentLocation from '../accident/accidentlocation';
 import AccidentDate from '../accident/accidentdate';
 import AccidentDescription from '../accident/accidentdescription';
 
-export default function AccidentCard() {
+export default function AccidentTooltip() {
   return (
-        <Card sx={{ width: '400px' }}>
+        <Card
+          className='max-w-sm'
+        >
             <div className="bg-slate-300">
               <AccidentLocation />
               <AccidentDate />

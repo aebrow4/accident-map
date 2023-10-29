@@ -40,9 +40,9 @@ export default function Menu() {
                 onClick={handleClose}
               >
                 <Link
-                  href="/about"
+                  href="/map"
                 >
-                  About
+                  Map
                 </Link>
               </MenuItem>
             </_Menu>
