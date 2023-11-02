@@ -9,16 +9,16 @@ export default function AccidentTooltip({
   accidentData
 }: { accidentData: IAccidentData }) {
   return (
-        <Card
+    <Card
           className='max-w-sm'
         >
-            <div className="bg-slate-300">
-              <AccidentLocation />
-              <AccidentDate
+      <div className="bg-slate-300">
+        <AccidentLocation />
+        <AccidentDate
                 date={accidentData.date}
               />
-              <AccidentTags />
-            </div>
-        </Card>
+        <AccidentTags />
+      </div>
+    </Card>
   );
 }

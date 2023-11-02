@@ -15,38 +15,38 @@ export default function Menu() {
   };
 
   return (
-        <div>
-            <Button
+    <div>
+      <Button
               variant="contained"
               onClick={handleClick}
             >
-                yo
-            </Button>
-            <_Menu
+        yo
+      </Button>
+      <_Menu
               open={open}
               anchorEl={anchorEl}
               onClose={handleClose}
             >
-              <MenuItem
+        <MenuItem
                 onClick={handleClose}
               >
-                <Link
+          <Link
                   href="/"
                 >
-                  Home
-                </Link>
-              </MenuItem>
-              <MenuItem
+            Home
+          </Link>
+        </MenuItem>
+        <MenuItem
                 onClick={handleClose}
               >
-                <Link
+          <Link
                   href="/map"
                 >
-                  Map
-                </Link>
-              </MenuItem>
-            </_Menu>
-        </div>
+            Map
+          </Link>
+        </MenuItem>
+      </_Menu>
+    </div>
 
   );
 }

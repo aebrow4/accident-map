@@ -8,11 +8,13 @@ import { type AccidentTags } from '@/app/constants/accidenttags';
 import { mapPointKey } from '@/app/fixtures/accidents';
 
 export default function Map({
-  selectedAccidentTypes,
+  selectedAccidentTags,
+  selectedAccidentYears,
   setSelectedAccident,
   selectedAccident
 }: {
-  selectedAccidentTypes: AccidentTags[]
+  selectedAccidentTags: AccidentTags[]
+  selectedAccidentYears: number[]
   setSelectedAccident: React.Dispatch<React.SetStateAction<IAccidentData | null>>
   selectedAccident: IAccidentData | null
 }) {
@@ -50,39 +52,46 @@ export default function Map({
     ;
     svg.call(zoom.on('zoom', handleZoom));
   }, []);
+
+  const filteredAccidents = AccidentData.filter(accident => {
+    const doesAccidentMatchTagsFilter = every(selectedAccidentTags, t => accident.tags.includes(t));
+    let doesAccidentMatchYearFilter = true;
+    if (selectedAccidentYears.length > 0) {
+      doesAccidentMatchYearFilter = selectedAccidentYears.includes(accident.date.year);
+    }
+    return doesAccidentMatchTagsFilter && doesAccidentMatchYearFilter;
+  });
   return (
-        <div className='overflow-hidden'>
-          <svg
+    <div className='overflow-hidden'>
+      <svg
             width={width}
             height={height}
             ref={ref}
           >
-            {AccidentData.map(accidentDatum => {
-              const { latlng, tags } = accidentDatum;
-              const doesAccidentMatchTagsFilter = every(selectedAccidentTypes, (t) => tags.includes(t));
+        {filteredAccidents.map(accidentDatum => {
+          const { latlng } = accidentDatum;
 
-              if (doesAccidentMatchTagsFilter) {
-                const scaledAlbersCoords = scaledAlbersProjection({
-                  scale: 1300, // Need 1300 scale for 975x610 viewport.
-                  x: width / 2,
-                  y: height / 2,
-                  lat: latlng[0],
-                  lng: latlng[1]
-                });
-                const cx = scaledAlbersCoords[0] * transform.k + transform.x;
-                const cy = scaledAlbersCoords[1] * transform.k + transform.y;
-                const key = mapPointKey({
-                  lat: accidentDatum.latlng[0],
-                  lng: accidentDatum.latlng[1]
-                });
-                const keyOfSelectedMapPoint = selectedAccident != null
-                  ? mapPointKey({
-                    lat: selectedAccident.latlng[0],
-                    lng: selectedAccident.latlng[1]
-                  })
-                  : '';
-                return (
-                  <MapPoint
+          const scaledAlbersCoords = scaledAlbersProjection({
+            scale: 1300, // Need 1300 scale for 975x610 viewport.
+            x: width / 2,
+            y: height / 2,
+            lat: latlng[0],
+            lng: latlng[1]
+          });
+          const cx = scaledAlbersCoords[0] * transform.k + transform.x;
+          const cy = scaledAlbersCoords[1] * transform.k + transform.y;
+          const key = mapPointKey({
+            lat: accidentDatum.latlng[0],
+            lng: accidentDatum.latlng[1]
+          });
+          const keyOfSelectedMapPoint = selectedAccident != null
+            ? mapPointKey({
+              lat: selectedAccident.latlng[0],
+              lng: selectedAccident.latlng[1]
+            })
+            : '';
+          return (
+            <MapPoint
                     key={key}
                     cx={cx}
                     cy={cy}
@@ -91,12 +100,9 @@ export default function Map({
                     accidentData={accidentDatum}
                     isSelected={key === keyOfSelectedMapPoint}
                   />
-                );
-              } else {
-                return null;
-              }
-            })}
-          </svg>
-        </div>
+          );
+        })}
+      </svg>
+    </div>
   );
 }

@@ -10,20 +10,23 @@ import { type IAccidentData } from '../fixtures/accidents';
 const Map = dynamic(async() => await import('../components/map/map'), { ssr: false });
 
 export default function MapPage() {
-  const [selectedAccidentTypes, setSelectedAccidentTypes] = React.useState<AccidentTags[]>([]);
+  const [selectedAccidentTags, setSelectedAccidentTags] = React.useState<AccidentTags[]>([]);
+  const [selectedAccidentYears, setSelectedAccidentYears] = React.useState<number[]>([]);
   const [selectedAccident, setSelectedAccident] = React.useState<IAccidentData | null>(null);
 
   return (
-        <main className="flex min-h-screen flex-row items-stretch justify-between py-24">
-          <Map
-            selectedAccidentTypes={selectedAccidentTypes}
+    <main className="flex min-h-screen flex-row items-stretch justify-between mx-6 py-24">
+      <Map
+            selectedAccidentTags={selectedAccidentTags}
+            selectedAccidentYears={selectedAccidentYears}
             setSelectedAccident={setSelectedAccident}
             selectedAccident={selectedAccident}
           />
-          <AccidentSidebar
-            setSelectedAccidentTypes={setSelectedAccidentTypes}
+      <AccidentSidebar
+            setSelectedAccidentTypes={setSelectedAccidentTags}
+            setSelectedAccidentYears={setSelectedAccidentYears}
             selectedAccident={selectedAccident}
           />
-        </main>
+    </main>
   );
 }

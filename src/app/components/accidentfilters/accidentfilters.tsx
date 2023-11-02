@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { Autocomplete, Chip, TextField } from '@mui/material';
 import { AccidentTags, humanReadableAccidentTags } from '@/app/constants/accidenttags';
+import YearPicker from './yearpicker';
 
 export default function AccidentFilters({
-  setSelectedAccidentTypes
+  setSelectedAccidentTypes,
+  setSelectedAccidentYears
 }: {
   setSelectedAccidentTypes: React.Dispatch<React.SetStateAction<AccidentTags[]>>
+  setSelectedAccidentYears: React.Dispatch<React.SetStateAction<number[]>>
 }) {
   const autocompleteOptions = Object.values(AccidentTags).map(tag => ({
     id: tag,
@@ -13,8 +16,10 @@ export default function AccidentFilters({
   }));
 
   return (
-        <div>
-            <Autocomplete
+    <>
+      <h1 className='text-xl pb-4'>Accident Filters</h1>
+      <div className='flex space-y-4 flex-col h-1/3'>
+        <Autocomplete
               multiple
               defaultValue={[]}
               disableCloseOnSelect
@@ -24,7 +29,7 @@ export default function AccidentFilters({
               }}
               options={autocompleteOptions}
               renderInput={params => (
-                 <TextField
+                <TextField
                   {...params}
                   label="Accident Tags"
                 />
@@ -45,7 +50,7 @@ export default function AccidentFilters({
               // Note that 'tag' here is not an accident tag but MUI's terminology for a selected value
               renderTags={(tagValue, getTagProps) => (
                 tagValue.map((option, index) => (
-                    <Chip
+                  <Chip
                       {...getTagProps({ index })}
                       key={option.label}
                       label={option.label}
@@ -53,6 +58,10 @@ export default function AccidentFilters({
                 ))
               )}
             />
-        </div>
+        <YearPicker
+              setSelectedAccidentYears={setSelectedAccidentYears}
+            />
+      </div>
+    </>
   );
 }

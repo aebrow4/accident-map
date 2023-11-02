@@ -2,6 +2,7 @@ import * as React from 'react';
 import AccidentTooltip from '../accidenttooltip/accidenttooltip';
 import useHover from '@/app/hooks/usehover';
 import { type IAccidentData } from '@/app/fixtures/accidents';
+import { Popover } from '@mui/material';
 
 export default function MapPoint({
   cx,
@@ -36,14 +37,23 @@ export default function MapPoint({
       />
       {hovered &&
         <foreignObject
-          width='400'
+          width='300'
           height='400'
-          x={cx - 500}
-          y={cy}
+          x={cx + 5}
+          y={cy + 5}
         >
+          {/* <Popover
+            open={hovered}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left'
+            }}
+          > */}
+
           <AccidentTooltip
             accidentData={accidentData}
           />
+          {/* </Popover> */}
         </foreignObject>
       }
     </>

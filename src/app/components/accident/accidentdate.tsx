@@ -7,6 +7,6 @@ export default function AccidentDate({
   date: DateTime
 }) {
   return (
-  <div className="text-xs">{date.toISODate()}</div>
+    <div className="text-xs">{date.toISODate()}</div>
   );
 }
