@@ -15,7 +15,8 @@ export class Location {
 }
 
 export enum USState {
-  California = 'CA'
+  California = 'CA',
+  Colorado = 'CO',
 }
 
 export enum CAProvince {
@@ -26,6 +27,8 @@ export function displayableStateOrProvince(stateOrProvince: USState | CAProvince
   switch (stateOrProvince) {
     case USState.California:
       return 'California';
+    case USState.Colorado:
+      return 'Colorado';
     case CAProvince.BritishColumbia:
       return 'British Columbia';
   }
@@ -69,7 +72,8 @@ export enum Mountain {
  * or 'Boulder Canyon'
  */
 export enum AACLocation {
-  YosemiteValley = 'Yosemite Valley'
+  YosemiteValley = 'Yosemite Valley',
+  BoulderCanyon = 'Boulder Canyon'
 }
 
 /**

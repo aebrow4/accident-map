@@ -1,22 +1,14 @@
 import * as React from 'react';
+import { type AccidentTags as Tags, humanReadableAccidentTags } from '@/app/constants/accidenttags';
 
-export default function AccidentTags() {
+export default function AccidentTags({ tags }: { tags: Tags[] }) {
   return (
     <div>
-      <ul>
-        <li>
-          Rappeling
-        </li>
-        <li>
-          Fatal
-        </li>
-        <li>
-          Inexperience
-        </li>
-        <li>
-          Rockfall
-        </li>
-      </ul>
+      <p>
+        {tags.map(tag => (
+          humanReadableAccidentTags[tag]
+        )).join(' | ')}
+      </p>
     </div>
   );
 }

@@ -14,13 +14,36 @@
  */
 
 export enum AccidentTags {
-  Rappeling = 'rappeling',
-  Fatal = 'fatal',
-  Inexperience = 'inexperience',
+  Serious = 'serious',
+  Roped = 'roped',
+  Unroped = 'unroped',
+  Solo = 'solo',
+  ClimbingAlone = 'climbing alone',
+  Bouldering = 'bouldering',
+  HandholdFootholdBroke = 'handhold/foothold broke',
+  Trad = 'trad',
+  AidAndBigWall = 'aid and big wall',
+  Pendulum = 'pendulum',
+  OffRoute = 'off route',
+  InadequateProtection = 'inadequate protection/pulled',
+  Wildlife = 'wildlife',
+  Descent = 'descent',
+
 }
 
 export const humanReadableAccidentTags: Record<AccidentTags, string> = {
-  [AccidentTags.Rappeling]: 'Rappeling',
-  [AccidentTags.Fatal]: 'Fatal',
-  [AccidentTags.Inexperience]: 'Inexperience'
+  [AccidentTags.Serious]: 'Serious',
+  [AccidentTags.Roped]: 'Roped',
+  [AccidentTags.Unroped]: 'Unroped',
+  [AccidentTags.Solo]: 'Solo',
+  [AccidentTags.ClimbingAlone]: 'Climbing Alone',
+  [AccidentTags.Bouldering]: 'Bouldering',
+  [AccidentTags.HandholdFootholdBroke]: 'Handhold/foothold broke',
+  [AccidentTags.Trad]: 'Trad',
+  [AccidentTags.AidAndBigWall]: 'Aid/big wall',
+  [AccidentTags.Pendulum]: 'Pendulum',
+  [AccidentTags.OffRoute]: 'Off route',
+  [AccidentTags.InadequateProtection]: 'Inadequate or pulled protection',
+  [AccidentTags.Wildlife]: 'Wildlife',
+  [AccidentTags.Descent]: 'Descent'
 };

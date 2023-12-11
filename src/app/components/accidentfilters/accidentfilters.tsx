@@ -16,7 +16,7 @@ export default function AccidentFilters({
   }));
 
   return (
-    <>
+    <div>
       <h1 className='text-xl pb-4'>Accident Filters</h1>
       <div className='flex space-y-4 flex-col h-1/3'>
         <Autocomplete
@@ -62,6 +62,6 @@ export default function AccidentFilters({
               setSelectedAccidentYears={setSelectedAccidentYears}
             />
       </div>
-    </>
+    </div>
   );
 }

@@ -4,7 +4,7 @@ export default function AccidentDescription({
   description
 }: { description: string }) {
   return (
-    <div className="max-h-52 overflow-scroll">
+    <div className="overflow-scroll, whitespace-pre-wrap">
       {description}
     </div>
   );
