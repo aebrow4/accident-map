@@ -10,13 +10,15 @@ export default function AccidentTooltip({
 }: { accidentData: IAccidentData }) {
   return (
     <Card
-          className='max-w-sm'
-        >
+      className='max-w-sm'
+    >
       <div className="bg-slate-300">
-        <AccidentLocation />
+        <AccidentLocation
+          accidentData={accidentData}
+        />
         <AccidentDate
-                date={accidentData.date}
-              />
+          date={accidentData.date}
+        />
         <AccidentTags />
       </div>
     </Card>
