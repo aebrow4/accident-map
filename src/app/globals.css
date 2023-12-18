@@ -25,3 +25,15 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.hovercontainer:hover {
+  .showonhover {
+    opacity: 1;
+  }
+}
+
+.hovercontainer {
+  .showonhover {
+    opacity: 0;
+  }
+}

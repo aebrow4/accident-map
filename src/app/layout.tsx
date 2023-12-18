@@ -18,14 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AppBar>
+      <body className={`${inter.className} h-screen`}>
+        <AppBar className='static'>
           <Toolbar>
             <Menu />
           </Toolbar>
-
         </AppBar>
-        {children}</body>
+        {children}
+      </body>
     </html>
   );
 }
