@@ -11,25 +11,30 @@ export default function AccidentTooltip({
   accidentData
 }: { accidentData: IAccidentData }) {
   return (
-    <Border>
+    <Border
+      radius='rounded-lg'
+    >
       <Card
-        className='max-w-sm'
+        className='w-96 bg-stone-50'
       >
-        <div className="bg-slate-300">
+        <div className='p-2'>
           <AccidentTitle
-          title={accidentData.title}
-        />
-          <Border />
-          <AccidentLocation
-            accidentData={accidentData}
+            title={accidentData.title}
+            fontSize='text-lg'
           />
-          <AccidentDate
-            date={accidentData.date}
-          />
-          <Border />
+          <div className='flex justify-between'>
+            <AccidentLocation
+              accidentData={accidentData}
+            />
+            <AccidentDate
+              date={accidentData.date}
+            />
+          </div>
+        </div>
+        <div className='bg-amber-50 px-2 pt-1 pb-2'>
           <AccidentTags
-            tags={accidentData.tags}
-          />
+              tags={accidentData.tags}
+            />
         </div>
       </Card>
     </Border>

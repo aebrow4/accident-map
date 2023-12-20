@@ -8,11 +8,13 @@ import { type IAccidentData } from '@/app/fixtures/accidents';
 import AccidentTitle from '../accident/accidenttitle';
 
 export default function AccidentSidebar({
+  selectedAccidentTypes,
   setSelectedAccidentTypes,
   setSelectedAccidentYears,
   selectedAccident
 }: {
-  setSelectedAccidentTypes: React.Dispatch<React.SetStateAction<AccidentTags[]>>
+  selectedAccidentTypes: Set<AccidentTags>
+  setSelectedAccidentTypes: React.Dispatch<React.SetStateAction<Set<AccidentTags>>>
   setSelectedAccidentYears: React.Dispatch<React.SetStateAction<number[]>>
   selectedAccident: IAccidentData | null
 }) {
@@ -21,6 +23,7 @@ export default function AccidentSidebar({
       <AccidentFilters
           setSelectedAccidentTypes={setSelectedAccidentTypes}
           setSelectedAccidentYears={setSelectedAccidentYears}
+          selectedAccidentTypes={selectedAccidentTypes}
         />
       {selectedAccident != null && (
       <>

@@ -7,6 +7,6 @@ export default function AccidentDate({
   date: DateTime
 }) {
   return (
-    <div className="text-xs">{date.toLocaleString(DateTime.DATETIME_MED)}</div>
+    <div className="text-sm">{date.toLocaleString(DateTime.DATE_MED)}</div>
   );
 }

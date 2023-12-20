@@ -1,9 +1,0 @@
-.hover.hovered:hover {
-    position: absolute;
-}
-.hover.hovered {
-    display: none
-}
-.hover.not-hovered {
-    display: none
-}

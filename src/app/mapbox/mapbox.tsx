@@ -20,7 +20,7 @@ export default function Mapbox({
   setSelectedAccident
 }: {
   selectedAccidentYears: number[]
-  selectedAccidentTags: AccidentTags[]
+  selectedAccidentTags: Set<AccidentTags>
   selectedAccident: IAccidentData | null
   setSelectedAccident: React.Dispatch<React.SetStateAction<IAccidentData | null>>
 }) {
@@ -103,12 +103,12 @@ export default function Mapbox({
       <div ref={mapContainer} className='flex h-full'>
       </div>
       {markers.filter(marker => {
-        if (selectedAccidentYears.length === 0 && selectedAccidentTags.length === 0) return true;
+        if (selectedAccidentYears.length === 0 && selectedAccidentTags.size === 0) return true;
         const accidentYear = marker.accidentDatum.date.year;
         if (selectedAccidentYears.length > 0 && !selectedAccidentYears.includes(accidentYear)) {
           return false;
         }
-        const accidentHasAllTags = _.every(selectedAccidentTags, (tag) => (
+        const accidentHasAllTags = _.every(Array.from(selectedAccidentTags), (tag) => (
           marker.accidentDatum.tags.includes(tag)
         ));
         if (!accidentHasAllTags) {
@@ -129,7 +129,7 @@ export default function Mapbox({
             accidentData={marker.accidentDatum}
             isSelected={Number(accidentId) === selectedAccident?.id}
             setSelectedAccident={setSelectedAccident}
-            tooltip={() => <AccidentTooltip accidentData={marker.accidentDatum} />}
+            tooltip={<AccidentTooltip accidentData={marker.accidentDatum} />}
         />);
       })
       }

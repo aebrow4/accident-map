@@ -14,7 +14,7 @@ export default function Marker({
   isSelected: boolean
   accidentData: IAccidentData
   setSelectedAccident: React.Dispatch<React.SetStateAction<IAccidentData | null>>
-  tooltip?: () => React.ReactNode
+  tooltip?: React.ReactNode
 }) {
   if (Number.isNaN(top) || Number.isNaN(left)) {
     return null;
@@ -49,7 +49,7 @@ export default function Marker({
       </svg>
       {tooltip != null && (
         <div className='showonhover'>
-          {tooltip()}
+          {tooltip}
         </div>
       )}
     </span>

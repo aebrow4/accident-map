@@ -3,7 +3,7 @@ import { type AccidentTags as Tags, humanReadableAccidentTags } from '@/app/cons
 
 export default function AccidentTags({ tags }: { tags: Tags[] }) {
   return (
-    <div>
+    <div className='text-sm'>
       <p>
         {tags.map(tag => (
           humanReadableAccidentTags[tag]
